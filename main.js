@@ -27,6 +27,7 @@ function getUserChoice(){
 //this funcion receives both the users and the computers choice
 function playRound(userChoice,computersChoice){
     let result;
+    let winner;
 
     console.log('user: ', userChoice)
     console.log('computer: ',computersChoice)
@@ -34,10 +35,10 @@ function playRound(userChoice,computersChoice){
     //created an array so we can display what won to what
     //we use either the user o computer choice as the index position
     const choices =  ['Rock','Paper','Scissors'];
-
     switch(true){
         case userChoice === computersChoice:
-            console.log(result = `It's a tie!`);
+            console.log(result = `It's a tie!`,'\n');
+            //this calls the function once again if its a tie
             playRound(getUserChoice(),getComputerChoice());
             break;
         case userChoice === 1 && computersChoice === 0:
@@ -55,10 +56,30 @@ function playRound(userChoice,computersChoice){
         default:
             console.log(result = 'You lose!');
             console.log(choices[computersChoice], 'beats', choices[userChoice]);
+            winner = 'computer'
     }
 
+    //detect whos the winner
+    if (winner != 'computer'){
+        winner = 'player'
+    } 
+    return winner
+} 
+
+function play(){
+    //we do this re-declaration so that we can get the winner on this scope also
+
+    for (let i = 0; i <= 4; i++){
+        let winner = playRound(getUserChoice(),getComputerChoice());
+        console.log('Round '+(i+1))
+        console.log('')
+    }
 }
 
-playRound(getUserChoice(),getComputerChoice());
+play();
+
+
+
+
 
 
