@@ -31,21 +31,29 @@ function playRound(userChoice,computersChoice){
     console.log('user: ', userChoice)
     console.log('computer: ',computersChoice)
 
+    //created an array so we can display what won to what
+    //we use either the user o computer choice as the index position
+    const choices =  ['Rock','Paper','Scissors'];
+
     switch(true){
         case userChoice === computersChoice:
-            result = `It's a tie!`
-            break
+            result = `It's a tie!`;
+            break;
         case userChoice === 1 && computersChoice === 0:
-            result = 'You win!'
-            break
+            result = 'You win!';
+            console.log(choices[userChoice], 'beats',choices[computersChoice]);
+            break;
         case userChoice === 2 && computersChoice === 1:
-            result = 'You win!!'
-            break
+            result = 'You win!!';
+            console.log(choices[userChoice], 'beats',choices[computersChoice]);
+            break;
         case userChoice === 0 && computersChoice === 2:
-            result = 'You win!!!'
-            break
+            result = 'You win!!!';
+            console.log(choices[userChoice], 'beats',choices[computersChoice]);
+            break;
         default:
-            result = 'You lose!'
+            result = 'You lose!';
+            console.log(choices[computersChoice], 'beats', choices[userChoice]);
     }
 
 
