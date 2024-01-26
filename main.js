@@ -5,6 +5,7 @@ function getComputerChoice(){
     return computersChoice;
 }
 
+//this functions handles the user input
 function getUserChoice(){
     //get the user input
     let userChoice = prompt('Choose either Rock, Paper or Scissors').toLowerCase();
@@ -23,11 +24,34 @@ function getUserChoice(){
     return userChoice;
 }
 
-function playRound(computersChoice,userChoice){
-    console.log(userChoice)
-    console.log(computersChoice)
+//this funcion receives both the users and the computers choice
+function playRound(userChoice,computersChoice){
+    let result;
+
+    console.log('user: ', userChoice)
+    console.log('computer: ',computersChoice)
+
+    switch(true){
+        case userChoice === computersChoice:
+            result = `It's a tie!`
+            break
+        case userChoice === 1 && computersChoice === 0:
+            result = 'You win!'
+            break
+        case userChoice === 2 && computersChoice === 1:
+            result = 'You win!!'
+            break
+        case userChoice === 0 && computersChoice === 2:
+            result = 'You win!!!'
+            break
+        default:
+            result = 'You lose!'
+    }
+
+
+    console.log(result)
 }
 
-playRound(getComputerChoice(),getUserChoice());
+playRound(getUserChoice(),getComputerChoice());
 
 
