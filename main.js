@@ -37,27 +37,26 @@ function playRound(userChoice,computersChoice){
 
     switch(true){
         case userChoice === computersChoice:
-            result = `It's a tie!`;
+            console.log(result = `It's a tie!`);
+            playRound(getUserChoice(),getComputerChoice());
             break;
         case userChoice === 1 && computersChoice === 0:
-            result = 'You win!';
+            console.log(result = 'You lose!');
             console.log(choices[userChoice], 'beats',choices[computersChoice]);
             break;
         case userChoice === 2 && computersChoice === 1:
-            result = 'You win!!';
+            console.log(result = 'You lose!');
             console.log(choices[userChoice], 'beats',choices[computersChoice]);
             break;
         case userChoice === 0 && computersChoice === 2:
-            result = 'You win!!!';
+            console.log(result = 'You lose!');
             console.log(choices[userChoice], 'beats',choices[computersChoice]);
             break;
         default:
-            result = 'You lose!';
+            console.log(result = 'You lose!');
             console.log(choices[computersChoice], 'beats', choices[userChoice]);
     }
 
-
-    console.log(result)
 }
 
 playRound(getUserChoice(),getComputerChoice());
