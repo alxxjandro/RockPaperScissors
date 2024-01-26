@@ -27,10 +27,11 @@ function getUserChoice(){
 //this funcion receives both the users and the computers choice
 function playRound(userChoice,computersChoice){
     let result;
-    let winner;
+    let winner = null;
 
-    console.log('user: ', userChoice)
-    console.log('computer: ',computersChoice)
+    //de-buging purposes 
+    //console.log('user: ', userChoice)
+    //console.log('computer: ',computersChoice)
 
     //created an array so we can display what won to what
     //we use either the user o computer choice as the index position
@@ -39,40 +40,66 @@ function playRound(userChoice,computersChoice){
         case userChoice === computersChoice:
             console.log(result = `It's a tie!`,'\n');
             //this calls the function once again if its a tie
-            playRound(getUserChoice(),getComputerChoice());
+            winner = playRound(getUserChoice(),getComputerChoice());
             break;
         case userChoice === 1 && computersChoice === 0:
-            console.log(result = 'You lose!');
+            console.log(result = 'You win!');
             console.log(choices[userChoice], 'beats',choices[computersChoice]);
             break;
         case userChoice === 2 && computersChoice === 1:
-            console.log(result = 'You lose!');
+            console.log(result = 'You win!!');
             console.log(choices[userChoice], 'beats',choices[computersChoice]);
             break;
         case userChoice === 0 && computersChoice === 2:
-            console.log(result = 'You lose!');
+            console.log(result = 'You win!!!');
             console.log(choices[userChoice], 'beats',choices[computersChoice]);
             break;
         default:
             console.log(result = 'You lose!');
-            console.log(choices[computersChoice], 'beats', choices[userChoice]);
             winner = 'computer'
+            console.log(choices[userChoice], 'loses to',choices[computersChoice]);
     }
 
-    //detect whos the winner
-    if (winner != 'computer'){
-        winner = 'player'
-    } 
+    //console.log(winner) this is just to de-bug
     return winner
 } 
 
 function play(){
-    //we do this re-declaration so that we can get the winner on this scope also
-
+    //define the variables to store both computer and players points
+    let playerPoints = 0,
+    computerPoints = 0;
+    
     for (let i = 0; i <= 4; i++){
-        let winner = playRound(getUserChoice(),getComputerChoice());
+        //display the round
         console.log('Round '+(i+1))
         console.log('')
+
+        //we do this re-declaration so that we can get the winner on this scope also
+        let winner = playRound(getUserChoice(),getComputerChoice());
+        //console.log(winner); this is just to de-bug (make sure it arrived as it should)
+
+        //add the points to the respective winner
+        if (winner === 'computer'){
+            computerPoints++;
+            console.log('Computer points ', computerPoints);
+            console.log(''); 
+            if (computerPoints === 3){
+                console.log('You lose to the computer!')
+                break;
+            }
+        } else if (winner !== 'computer'){
+            playerPoints++;
+            console.log('Player points ', playerPoints);
+            console.log('')
+            //break the game if the player wins
+            if (playerPoints === 3){
+                console.log('You win to the computer!!!')
+                break;
+            }
+        }
+
+
+
     }
 }
 
