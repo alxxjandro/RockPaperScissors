@@ -18,7 +18,8 @@ function getUserChoice(){
     } else if (userChoice === 'scissors') {
         userChoice = 2;
     } else{
-        userChoice = null;
+        alert('Invalid input, try again!');
+        userChoice = getUserChoice();
     }
 
     return userChoice;
