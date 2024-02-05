@@ -35,26 +35,20 @@ function playRound(userChoice,computersChoice){
     const choices =  ['Rock','Paper','Scissors'];
     switch(true){
         case userChoice === computersChoice:
-            console.log(result = `It's a tie!`,'\n');
-            //this calls the function once again if its a tie
-            winner = playRound(getUserChoice(),getComputerChoice());
+            resultText.innerText = `It's a tie! `;
             break;
         case userChoice === 1 && computersChoice === 0:
-            console.log(result = 'You win!');
-            console.log(choices[userChoice], 'beats',choices[computersChoice]);
+            resultText.innerText = `You win! ` + choices[userChoice] + ' beats ' + choices[computersChoice]
             break;
         case userChoice === 2 && computersChoice === 1:
-            console.log(result = 'You win!!');
-            console.log(choices[userChoice], 'beats',choices[computersChoice]);
+            resultText.innerText = `You win! ` + choices[userChoice] + ' beats ' + choices[computersChoice]
             break;
         case userChoice === 0 && computersChoice === 2:
-            console.log(result = 'You win!!!');
-            console.log(choices[userChoice], 'beats',choices[computersChoice]);
+            resultText.innerText = `You win! ` + choices[userChoice] + ' beats ' + choices[computersChoice]
             break;
         default:
-            console.log(result = 'You lose!');
+            resultText.innerText = 'You lose! ' + choices[userChoice] + ' loses to '+ choices[computersChoice]
             winner = 'computer'
-            console.log(choices[userChoice], 'loses to',choices[computersChoice]);
     }
 
     return winner
@@ -104,6 +98,11 @@ const scissorsBtn = document.querySelector('#scissorsBtn');
 
 const buttons = document.querySelectorAll('button');
 
+const resultContainer = document.querySelector('#result')
+const resultText = document.createElement('p');
+resultContainer.appendChild(resultText)
+
+
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     
@@ -120,8 +119,6 @@ buttons.forEach((button) => {
         default:
             break;
     }
-
-
 
   });
 });
