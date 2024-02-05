@@ -93,9 +93,6 @@ function play5times(){
                 break;
             }
         }
-
-
-
     }
 }
 
