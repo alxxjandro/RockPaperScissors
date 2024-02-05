@@ -27,6 +27,7 @@ function getUserChoice(){
 
 let playerPoints = 0;
 let computerPoints = 0;
+let rounds = 0;
 function playRound(userChoice,computersChoice){
     let result;
     let winner = null;
@@ -39,61 +40,43 @@ function playRound(userChoice,computersChoice){
         case userChoice === 1 && computersChoice === 0:
             resultText.innerText = `You win! ` + choices[userChoice] + ' beats ' + choices[computersChoice]
             playerPoints += 1;
+            rounds +=1
             break;
         case userChoice === 2 && computersChoice === 1:
             resultText.innerText = `You win! ` + choices[userChoice] + ' beats ' + choices[computersChoice]
             playerPoints += 1;
+            rounds +=1
             break;
         case userChoice === 0 && computersChoice === 2:
             resultText.innerText = `You win! ` + choices[userChoice] + ' beats ' + choices[computersChoice]
             playerPoints += 1;
+            rounds +=1
             break;
         default:
             resultText.innerText = 'You lose! ' + choices[userChoice] + ' loses to '+ choices[computersChoice]
             computerPoints +=1;
-            winner = 'computer'
+            rounds +=1
     }
 
     score.innerText = 'Player points: ' + playerPoints + '  |   Computer Points: ' + computerPoints;
+    round.innerText = 'Round: ' + rounds;
 
-    return winner
-} 
+    if (rounds <= 5 && playerPoints === 3 ){
+        resultText.innerText = 'You Win!!!'
+        score.innerText = 'Click a button to play again'
+        round.innerText = ''
 
-function play5times(){
-    //define the variables to store both computer and players points
-    let playerPoints = 0,
-    computerPoints = 0;
-    
-    for (let i = 0; i <= 4; i++){
-        //display the round
-        console.log('Round '+(i+1))
-        console.log('')
+        computerPoints = 0;
+        playerPoints = 0;
+    } else if (rounds <= 5 && computerPoints === 3 ){
+        resultText.innerText = 'You Lose!!!'
+        score.innerText = 'Click a button to play again'
+        round.innerText = ''
 
-        //we do this re-declaration so that we can get the winner on this scope also
-        let winner = playRound(getUserChoice(),getComputerChoice());
-        //console.log(winner); this is just to de-bug (make sure it arrived as it should)
-
-        //add the points to the respective winner
-        if (winner === 'computer'){
-            computerPoints++;
-            console.log('Computer points ', computerPoints);
-            console.log(''); 
-            if (computerPoints === 3){
-                console.log('You lose to the computer!')
-                break;
-            }
-        } else if (winner !== 'computer'){
-            playerPoints++;
-            console.log('Player points ', playerPoints);
-            console.log('')
-            //break the game if the player wins
-            if (playerPoints === 3){
-                console.log('You win to the computer!!!')
-                break;
-            }
-        }
+        computerPoints = 0;
+        playerPoints = 0;
     }
-}
+} 
 
 
 //this part will handle the GUI of the game
@@ -106,9 +89,9 @@ const buttons = document.querySelectorAll('button');
 const resultContainer = document.querySelector('#result')
 const resultText = document.createElement('p');
 const score = document.createElement('p');
+const round = document.createElement('p');
 
-resultContainer.appendChild(resultText);
-resultContainer.appendChild(score);
+resultContainer.append(resultText,score,round);
 
 
 buttons.forEach((button) => {
@@ -130,15 +113,3 @@ buttons.forEach((button) => {
 
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
