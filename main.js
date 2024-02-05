@@ -30,10 +30,6 @@ function playRound(userChoice,computersChoice){
     let result;
     let winner = null;
 
-    //de-buging purposes 
-    //console.log('user: ', userChoice)
-    //console.log('computer: ',computersChoice)
-
     //created an array so we can display what won to what
     //we use either the user o computer choice as the index position
     const choices =  ['Rock','Paper','Scissors'];
@@ -61,11 +57,10 @@ function playRound(userChoice,computersChoice){
             console.log(choices[userChoice], 'loses to',choices[computersChoice]);
     }
 
-    //console.log(winner) this is just to de-bug
     return winner
 } 
 
-function play(){
+function play5times(){
     //define the variables to store both computer and players points
     let playerPoints = 0,
     computerPoints = 0;
@@ -104,7 +99,7 @@ function play(){
     }
 }
 
-play();
+
 
 
 
