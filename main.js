@@ -96,6 +96,14 @@ function play5times(){
     }
 }
 
+//this part will handle the GUI of the game
+
+const rockBtn = document.querySelector('#rockBtn');
+const paperBtn = document.querySelector('#paperBtn');
+const scissorsBtn = document.querySelector('#scissorsBtn');
+
+
+
 
 
 
