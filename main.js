@@ -25,13 +25,12 @@ function getUserChoice(){
     return userChoice;
 }
 
-//this funcion receives both the users and the computers choice
+let playerPoints = 0;
+let computerPoints = 0;
 function playRound(userChoice,computersChoice){
     let result;
     let winner = null;
 
-    //created an array so we can display what won to what
-    //we use either the user o computer choice as the index position
     const choices =  ['Rock','Paper','Scissors'];
     switch(true){
         case userChoice === computersChoice:
@@ -39,17 +38,23 @@ function playRound(userChoice,computersChoice){
             break;
         case userChoice === 1 && computersChoice === 0:
             resultText.innerText = `You win! ` + choices[userChoice] + ' beats ' + choices[computersChoice]
+            playerPoints += 1;
             break;
         case userChoice === 2 && computersChoice === 1:
             resultText.innerText = `You win! ` + choices[userChoice] + ' beats ' + choices[computersChoice]
+            playerPoints += 1;
             break;
         case userChoice === 0 && computersChoice === 2:
             resultText.innerText = `You win! ` + choices[userChoice] + ' beats ' + choices[computersChoice]
+            playerPoints += 1;
             break;
         default:
             resultText.innerText = 'You lose! ' + choices[userChoice] + ' loses to '+ choices[computersChoice]
+            computerPoints +=1;
             winner = 'computer'
     }
+
+    score.innerText = 'Player points: ' + playerPoints + '  |   Computer Points: ' + computerPoints;
 
     return winner
 } 
@@ -90,8 +95,8 @@ function play5times(){
     }
 }
 
-//this part will handle the GUI of the game
 
+//this part will handle the GUI of the game
 const rockBtn = document.querySelector('#rockBtn');
 const paperBtn = document.querySelector('#paperBtn');
 const scissorsBtn = document.querySelector('#scissorsBtn');
@@ -100,7 +105,10 @@ const buttons = document.querySelectorAll('button');
 
 const resultContainer = document.querySelector('#result')
 const resultText = document.createElement('p');
-resultContainer.appendChild(resultText)
+const score = document.createElement('p');
+
+resultContainer.appendChild(resultText);
+resultContainer.appendChild(score);
 
 
 buttons.forEach((button) => {
