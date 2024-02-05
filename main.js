@@ -68,6 +68,7 @@ function playRound(userChoice,computersChoice){
 
         computerPoints = 0;
         playerPoints = 0;
+        rounds = 0;
     } else if (rounds <= 5 && computerPoints === 3 ){
         resultText.innerText = 'You Lose!!!'
         score.innerText = 'Click a button to play again'
@@ -75,6 +76,7 @@ function playRound(userChoice,computersChoice){
 
         computerPoints = 0;
         playerPoints = 0;
+        rounds = 0;
     }
 } 
 
