@@ -102,6 +102,32 @@ const rockBtn = document.querySelector('#rockBtn');
 const paperBtn = document.querySelector('#paperBtn');
 const scissorsBtn = document.querySelector('#scissorsBtn');
 
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    
+    switch(true){
+        case button.id === 'rockBtn':
+            playRound(0,getComputerChoice());
+            break;
+        case button.id === 'paperBtn':
+            playRound(1,getComputerChoice());
+            break;
+        case button.id === 'scissorsBtn':
+            playRound(2,getComputerChoice());
+            break;
+        default:
+            break;
+    }
+
+
+
+  });
+});
+
+
+
 
 
 
